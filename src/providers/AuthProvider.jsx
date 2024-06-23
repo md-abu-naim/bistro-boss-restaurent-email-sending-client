@@ -51,12 +51,13 @@ const AuthProvider = ({ children }) => {
                             localStorage.setItem('access-token', res.data.token);
                         }
                     })
+                setLoading(false);
             }
             else {
                 // TODO: remove token (if token stored in the client side: Local storage, caching, in memory)
                 localStorage.removeItem('access-token');
+                setLoading(false);
             }
-            setLoading(false);
         });
         return () => {
             return unsubscribe();
